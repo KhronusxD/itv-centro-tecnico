@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-950 text-cream antialiased font-sans;
+  background-image:
+    radial-gradient(ellipse 1200px 600px at 50% 0%, rgba(46, 231, 111, 0.12), transparent 60%);
+}
+
+::selection {
+  background: #2ee76f;
+  color: #050d09;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #050d09;
+}
+::-webkit-scrollbar-thumb {
+  background: #06634d;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2ee76f;
+}
+
+@layer components {
+  .container-px {
+    @apply px-5 sm:px-8 lg:px-12;
+  }
+  .container-max {
+    @apply mx-auto max-w-7xl;
+  }
+  .section {
+    @apply py-20 sm:py-28 lg:py-32;
+  }
+  .h-display {
+    @apply font-display font-semibold leading-[1.05] tracking-tight;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-forest-400;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200;
+  }
+  .btn-primary {
+    @apply btn bg-forest-500 text-ink-950 hover:bg-forest-400 hover:shadow-glow;
+  }
+  .btn-ghost {
+    @apply btn border border-white/10 bg-white/5 text-cream hover:border-forest-500/40 hover:bg-white/10;
+  }
+  .card {
+    @apply relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-white/[0.01] backdrop-blur-sm;
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:border-forest-500/30 hover:bg-white/[0.06] hover:shadow-glow-soft;
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(46, 231, 111, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(46, 231, 111, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .mask-fade-bottom {
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+}
