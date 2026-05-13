@@ -5,7 +5,7 @@ export const site = {
   fullName: 'iTV Centro Técnico — Manaus',
   tagline: 'Sua TV merece um centro técnico de verdade.',
   description:
-    'Assistência técnica especializada em TVs em Manaus. Coleta grátis em domicílio, garantia de até 6 meses e atendimento em até 48h. Mais de 900 avaliações 5★ no Google.',
+    'Assistência técnica especializada em TVs em Manaus. Coleta grátis em domicílio, garantia de até 6 meses e atendimento em até 48h. Mais de 1.250 avaliações 5★ no Google.',
   phones: {
     primary: '5592992373523',
     secondary: '5592993347933',
@@ -31,7 +31,7 @@ export const site = {
     saturday: 'Sábado · 8h às 13h',
     sunday: 'Domingo · Fechado',
   },
-  reviewsCount: 900,
+  reviewsCount: '1.250',
   rating: 5.0,
 };
 

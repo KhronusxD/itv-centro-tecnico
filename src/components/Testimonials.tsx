@@ -56,7 +56,7 @@ export function Testimonials() {
           <div className="lg:col-span-7">
             <span className="eyebrow mb-4">Depoimentos</span>
             <h2 className="h-display text-4xl text-cream sm:text-5xl">
-              900+ avaliações 5★ no Google.
+              1.250+ avaliações 5★ no Google.
               <br />
               <span className="text-cream/60">Esses são alguns deles.</span>
             </h2>
@@ -68,7 +68,7 @@ export function Testimonials() {
             <div>
               <div className="font-display text-3xl font-bold text-cream">5,0</div>
               <div className="text-xs text-cream/60">
-                Mais de 900 avaliações reais no Google
+                Mais de 1.250 avaliações reais no Google
               </div>
             </div>
           </div>

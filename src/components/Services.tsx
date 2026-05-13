@@ -124,9 +124,9 @@ export function Services() {
               className="card card-hover group relative flex h-full flex-col p-6"
             >
               <div
-                className={`absolute right-0 top-0 h-20 w-20 rounded-bl-[40px] bg-gradient-to-br ${s.accent} opacity-90`}
+                className={`absolute right-0 top-0 h-20 w-20 rounded-bl-[40px] bg-gradient-to-br ${s.accent}`}
               >
-                <div className="absolute right-3 top-3 text-[10px] font-bold uppercase tracking-widest text-ink-950/80">
+                <div className="absolute right-3 top-3 text-[10px] font-bold uppercase tracking-widest text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
                   {s.tag}
                 </div>
               </div>
