@@ -6,14 +6,17 @@ import { site } from '@/lib/site';
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-  display: 'swap',
+  display: 'optional',
+  weight: ['400', '500', '600', '700'],
+  preload: true,
 });
 
 const sora = Sora({
   subsets: ['latin'],
   variable: '--font-sora',
-  display: 'swap',
-  weight: ['400', '500', '600', '700', '800'],
+  display: 'optional',
+  weight: ['600', '700'],
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -54,6 +57,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${sora.variable}`}>
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/images/tecnico-768w.avif"
+          type="image/avif"
+          imageSrcSet="/images/tecnico-480w.avif 480w, /images/tecnico-768w.avif 768w, /images/tecnico-1200w.avif 1200w"
+          imageSizes="(min-width: 1024px) 480px, 100vw"
+          fetchPriority="high"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

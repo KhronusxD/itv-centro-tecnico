@@ -1,9 +1,7 @@
-'use client';
-
-import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { MapPin, Clock, ArrowUpRight } from 'lucide-react';
 import { site } from '@/lib/site';
+import { Picture } from './ui/Picture';
+import { Reveal } from './ui/Reveal';
 
 export function Store() {
   return (
@@ -12,13 +10,7 @@ export function Store() {
       className="section relative overflow-hidden border-y border-white/5 bg-ink-900/40"
     >
       <div className="container-max container-px">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto max-w-2xl text-center"
-        >
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow mb-4">A loja</span>
           <h2 className="h-display text-4xl text-cream sm:text-5xl">
             Um centro técnico que parece showroom.
@@ -27,22 +19,18 @@ export function Store() {
             Espaço moderno, organizado e pronto pra te receber. Conheça a iTV Centro
             Técnico de pertinho.
           </p>
-        </motion.div>
+        </Reveal>
 
         <div className="mt-14 grid gap-4 lg:grid-cols-3">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.6 }}
-            className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 lg:col-span-2 lg:aspect-auto"
-          >
-            <Image
-              src="/images/loja-fachada.png"
-              alt="Fachada da iTV Centro Técnico em Manaus"
-              fill
-              className="object-cover"
+          <Reveal className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 lg:col-span-2 lg:aspect-auto">
+            <Picture
+              base="loja-fachada"
+              widths={[640, 1024]}
               sizes="(min-width: 1024px) 800px, 100vw"
+              alt="Fachada da iTV Centro Técnico em Manaus"
+              width={1024}
+              height={573}
+              className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 text-cream">
@@ -53,47 +41,39 @@ export function Store() {
                 Rua Visconde de Utinga, 628
               </div>
             </div>
-          </motion.div>
+          </Reveal>
 
           <div className="grid gap-4">
-            <motion.div
-              initial={{ opacity: 0, x: 16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10"
-            >
-              <Image
-                src="/images/loja-balcao.png"
-                alt="Balcão de atendimento da iTV"
-                fill
-                className="object-cover"
+            <Reveal delay={100} className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
+              <Picture
+                base="loja-balcao"
+                widths={[640, 1024]}
                 sizes="(min-width: 1024px) 400px, 50vw"
+                alt="Balcão de atendimento da iTV"
+                width={1024}
+                height={578}
+                className="absolute inset-0 h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 to-transparent" />
               <div className="absolute bottom-4 left-4 text-xs font-medium uppercase tracking-widest text-forest-500">
                 Atendimento
               </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10"
-            >
-              <Image
-                src="/images/loja-showroom.png"
-                alt="Showroom da iTV com TVs em exposição"
-                fill
-                className="object-cover"
+            </Reveal>
+            <Reveal delay={200} className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
+              <Picture
+                base="loja-showroom"
+                widths={[640, 1024]}
                 sizes="(min-width: 1024px) 400px, 50vw"
+                alt="Showroom da iTV com TVs em exposição"
+                width={1024}
+                height={572}
+                className="absolute inset-0 h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 to-transparent" />
               <div className="absolute bottom-4 left-4 text-xs font-medium uppercase tracking-widest text-forest-500">
                 Showroom
               </div>
-            </motion.div>
+            </Reveal>
           </div>
         </div>
 

@@ -1,0 +1,31 @@
+# Static assets — hashed by Next.js, safe to cache forever
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images, fonts — also content-addressable in our naming (-{w}w.{ext})
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+/logo/*
+  Cache-Control: public, max-age=31536000, immutable
+/*.avif
+  Cache-Control: public, max-age=31536000, immutable
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# Favicon set
+/favicon.ico
+  Cache-Control: public, max-age=2592000
+/icon.png
+  Cache-Control: public, max-age=2592000
+/apple-icon.png
+  Cache-Control: public, max-age=2592000
+
+# HTML — revalidate often, but allow CDN to serve while revalidating
+/*
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()

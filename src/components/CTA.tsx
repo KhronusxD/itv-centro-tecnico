@@ -1,21 +1,13 @@
-'use client';
-
-import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { MessageCircle, Phone, ArrowRight } from 'lucide-react';
 import { defaultWhatsapp, site } from '@/lib/site';
+import { Picture } from './ui/Picture';
+import { Reveal } from './ui/Reveal';
 
 export function CTA() {
   return (
     <section className="section relative overflow-hidden">
       <div className="container-max container-px">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7 }}
-          className="relative overflow-hidden rounded-3xl border border-white/10 bg-forest-radial p-10 sm:p-14 lg:p-20"
-        >
+        <Reveal className="relative overflow-hidden rounded-3xl border border-white/10 bg-forest-radial p-10 sm:p-14 lg:p-20">
           <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-forest-500/30 blur-3xl" />
           <div className="absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-forest-700/20 blur-3xl" />
 
@@ -50,17 +42,19 @@ export function CTA() {
 
             <div className="relative hidden lg:col-span-5 lg:block">
               <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-3xl border border-white/10 bg-ink-950/40 backdrop-blur">
-                <Image
-                  src="/images/brand-mark.png"
-                  alt="Marca iTV Centro Técnico"
-                  fill
-                  className="object-cover"
+                <Picture
+                  base="brand-mark"
+                  widths={[320, 640]}
                   sizes="400px"
+                  alt="Marca iTV Centro Técnico"
+                  width={640}
+                  height={362}
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
             </div>
           </div>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,9 +1,6 @@
-'use client';
-
-import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { ArrowRight, MessageCircle, Star, Truck, ShieldCheck, Clock } from 'lucide-react';
 import { defaultWhatsapp, site } from '@/lib/site';
+import { Picture } from './ui/Picture';
 
 export function Hero() {
   return (
@@ -13,12 +10,7 @@ export function Hero() {
 
       <div className="container-max container-px relative">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="lg:col-span-7"
-          >
+          <div className="anim-fade-up lg:col-span-7">
             <span className="eyebrow mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-forest-500 shadow-glow" />
               Centro técnico em Manaus · Desde 2019
@@ -73,22 +65,22 @@ export function Hero() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
-            className="relative lg:col-span-5"
+          <div
+            className="anim-fade-scale relative lg:col-span-5"
+            style={{ animationDelay: '100ms' }}
           >
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-white/10 bg-forest-radial">
-              <Image
-                src="/images/tecnico.png"
-                alt="Técnico iTV Centro Técnico apresentando TV reparada"
-                fill
-                priority
-                className="object-cover object-center"
+              <Picture
+                base="tecnico"
+                widths={[480, 768, 1200]}
                 sizes="(min-width: 1024px) 480px, 100vw"
+                alt="Técnico iTV Centro Técnico apresentando TV reparada"
+                width={1200}
+                height={675}
+                priority
+                className="absolute inset-0 h-full w-full object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-transparent" />
 
@@ -116,11 +108,9 @@ export function Hero() {
               </div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="absolute -left-4 top-12 hidden rounded-2xl border border-white/10 bg-ink-900/90 px-4 py-3 backdrop-blur-xl shadow-glow-soft sm:flex sm:items-center sm:gap-3 lg:-left-8"
+            <div
+              className="anim-fade-up absolute -left-4 top-12 hidden rounded-2xl border border-white/10 bg-ink-900/90 px-4 py-3 backdrop-blur-xl shadow-glow-soft sm:flex sm:items-center sm:gap-3 lg:-left-8"
+              style={{ animationDelay: '500ms' }}
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-forest-500/15">
                 <ShieldCheck className="h-5 w-5 text-forest-500" />
@@ -129,8 +119,8 @@ export function Hero() {
                 <div className="font-semibold text-cream">Garantia real</div>
                 <div className="text-cream/60">Em todo serviço</div>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

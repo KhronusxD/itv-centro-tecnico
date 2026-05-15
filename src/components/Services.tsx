@@ -1,6 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import {
   Stethoscope,
   Cpu,
@@ -13,6 +10,7 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { defaultWhatsapp } from '@/lib/site';
+import { Reveal } from './ui/Reveal';
 
 type Service = {
   tag: string;
@@ -85,13 +83,7 @@ export function Services() {
   return (
     <section id="servicos" className="section relative">
       <div className="container-max container-px">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end"
-        >
+        <Reveal className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
           <div className="max-w-2xl">
             <span className="eyebrow mb-4">Serviços</span>
             <h2 className="h-display text-4xl text-cream sm:text-5xl">
@@ -111,16 +103,14 @@ export function Services() {
             Pedir orçamento
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
-        </motion.div>
+        </Reveal>
 
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((s, i) => (
-            <motion.article
+            <Reveal
               key={s.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: i * 0.04 }}
+              delay={i * 40}
+              as="article"
               className="card card-hover group relative flex h-full flex-col p-6"
             >
               <div
@@ -138,7 +128,7 @@ export function Services() {
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-cream/55">{s.desc}</p>
               </div>
-            </motion.article>
+            </Reveal>
           ))}
         </div>
       </div>

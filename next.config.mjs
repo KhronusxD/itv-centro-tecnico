@@ -5,6 +5,11 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  compress: true,
+  productionBrowserSourceMaps: false,
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
+  },
 };
 
 export default nextConfig;

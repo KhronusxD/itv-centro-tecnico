@@ -1,8 +1,5 @@
-'use client';
-
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
 import { Plus } from 'lucide-react';
+import { Reveal } from './ui/Reveal';
 
 const faqs = [
   {
@@ -40,18 +37,10 @@ const faqs = [
 ];
 
 export function Faq() {
-  const [open, setOpen] = useState<number | null>(0);
-
   return (
     <section id="faq" className="section relative">
       <div className="container-max container-px">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6 }}
-          className="grid gap-10 lg:grid-cols-12"
-        >
+        <Reveal className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <span className="eyebrow mb-4">Perguntas frequentes</span>
             <h2 className="h-display text-4xl text-cream sm:text-5xl">
@@ -65,42 +54,21 @@ export function Faq() {
           <div className="lg:col-span-8">
             <div className="divide-y divide-white/10 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]">
               {faqs.map((item, i) => (
-                <div key={item.q}>
-                  <button
-                    type="button"
-                    aria-expanded={open === i}
-                    onClick={() => setOpen(open === i ? null : i)}
-                    className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left transition-colors hover:bg-white/[0.03]"
-                  >
+                <details key={item.q} className="group" open={i === 0}>
+                  <summary className="flex w-full cursor-pointer items-center justify-between gap-6 px-6 py-5 text-left transition-colors hover:bg-white/[0.03] [&::-webkit-details-marker]:hidden">
                     <span className="font-display text-base font-semibold text-cream sm:text-lg">
                       {item.q}
                     </span>
-                    <Plus
-                      className={`h-5 w-5 shrink-0 text-forest-500 transition-transform duration-300 ${
-                        open === i ? 'rotate-45' : ''
-                      }`}
-                    />
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {open === i && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeOut' }}
-                        className="overflow-hidden"
-                      >
-                        <p className="px-6 pb-6 text-sm leading-relaxed text-cream/70 sm:text-base">
-                          {item.a}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                    <Plus className="h-5 w-5 shrink-0 text-forest-500 transition-transform duration-300 group-open:rotate-45" />
+                  </summary>
+                  <p className="px-6 pb-6 text-sm leading-relaxed text-cream/70 sm:text-base">
+                    {item.a}
+                  </p>
+                </details>
               ))}
             </div>
           </div>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

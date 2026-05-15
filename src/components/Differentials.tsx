@@ -1,6 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import {
   Truck,
   ShieldCheck,
@@ -9,6 +6,7 @@ import {
   Star,
   HeadphonesIcon,
 } from 'lucide-react';
+import { Reveal } from './ui/Reveal';
 
 const items = [
   {
@@ -47,13 +45,7 @@ export function Differentials() {
   return (
     <section className="section relative" id="diferenciais">
       <div className="container-max container-px">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto max-w-2xl text-center"
-        >
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow mb-4">Por que iTV</span>
           <h2 className="h-display text-4xl text-cream sm:text-5xl">
             O padrão de assistência técnica que Manaus precisava.
@@ -62,16 +54,13 @@ export function Differentials() {
             Tecnologia com solução, atendimento com coração — e sem nenhuma surpresa
             no orçamento.
           </p>
-        </motion.div>
+        </Reveal>
 
         <div className="mt-16 grid gap-px overflow-hidden rounded-3xl bg-white/5 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item, i) => (
-            <motion.div
+            <Reveal
               key={item.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
+              delay={i * 50}
               className="group relative bg-ink-950 p-8 transition-colors hover:bg-ink-900"
             >
               <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-forest-500/10 text-forest-500 transition-all group-hover:bg-forest-500/20 group-hover:shadow-glow">
@@ -81,7 +70,7 @@ export function Differentials() {
                 {item.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-cream/60">{item.desc}</p>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

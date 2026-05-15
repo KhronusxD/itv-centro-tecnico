@@ -1,7 +1,5 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { MessageCircle, Truck, ClipboardCheck, Tv } from 'lucide-react';
+import { Reveal } from './ui/Reveal';
 
 const steps = [
   {
@@ -38,13 +36,7 @@ export function HowItWorks() {
     >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-forest-500/40 to-transparent" />
       <div className="container-max container-px">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto max-w-2xl text-center"
-        >
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow mb-4">Como funciona</span>
           <h2 className="h-display text-4xl text-cream sm:text-5xl">
             Do WhatsApp até a TV de volta funcionando.
@@ -52,18 +44,11 @@ export function HowItWorks() {
           <p className="mt-5 text-lg text-cream/70">
             Um processo simples, rastreável e sem surpresas no boleto.
           </p>
-        </motion.div>
+        </Reveal>
 
         <div className="mt-16 grid gap-5 lg:grid-cols-4 lg:gap-6">
           {steps.map((step, i) => (
-            <motion.div
-              key={step.label}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.55, delay: i * 0.08 }}
-              className="card relative overflow-hidden p-7"
-            >
+            <Reveal key={step.label} delay={i * 80} className="card relative overflow-hidden p-7">
               <div className="absolute right-5 top-5 font-display text-5xl font-bold text-white/[0.04]">
                 {step.label}
               </div>
@@ -77,7 +62,7 @@ export function HowItWorks() {
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-cream/60">{step.desc}</p>
               </div>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

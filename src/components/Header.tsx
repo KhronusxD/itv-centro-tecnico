@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Menu, X, MessageCircle } from 'lucide-react';
@@ -35,14 +34,25 @@ export function Header() {
     >
       <div className="container-max container-px flex h-20 items-center justify-between">
         <Link href="/" className="relative flex items-center" aria-label="iTV Centro Técnico">
-          <Image
-            src="/logo/itv-horizontal-white.png"
-            alt="iTV Centro Técnico"
-            width={140}
-            height={48}
-            priority
-            className="h-9 w-auto sm:h-10"
-          />
+          <picture>
+            <source
+              type="image/avif"
+              srcSet="/logo/itv-horizontal-white-280w.avif 1x, /logo/itv-horizontal-white-560w.avif 2x"
+            />
+            <source
+              type="image/webp"
+              srcSet="/logo/itv-horizontal-white-280w.webp 1x, /logo/itv-horizontal-white-560w.webp 2x"
+            />
+            <img
+              src="/logo/itv-horizontal-white-280w.webp"
+              alt="iTV Centro Técnico"
+              width={140}
+              height={140}
+              fetchPriority="high"
+              decoding="sync"
+              className="h-9 w-auto sm:h-10"
+            />
+          </picture>
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">

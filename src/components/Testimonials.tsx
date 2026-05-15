@@ -1,7 +1,5 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
+import { Reveal } from './ui/Reveal';
 
 const testimonials = [
   {
@@ -46,13 +44,7 @@ export function Testimonials() {
   return (
     <section className="section relative" id="depoimentos">
       <div className="container-max container-px">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6 }}
-          className="grid gap-10 lg:grid-cols-12 lg:items-end"
-        >
+        <Reveal className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <span className="eyebrow mb-4">Depoimentos</span>
             <h2 className="h-display text-4xl text-cream sm:text-5xl">
@@ -72,16 +64,14 @@ export function Testimonials() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </Reveal>
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
-            <motion.figure
+            <Reveal
               key={t.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
+              delay={i * 50}
+              as="figure"
               className="card card-hover relative flex h-full flex-col p-7"
             >
               <Quote className="h-8 w-8 text-forest-500/30" />
@@ -99,7 +89,7 @@ export function Testimonials() {
                   ))}
                 </div>
               </figcaption>
-            </motion.figure>
+            </Reveal>
           ))}
         </div>
       </div>
